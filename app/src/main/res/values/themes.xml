@@ -1,9 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Susa_lautadev" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.Theme.Susa_lautadev" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/white</item>
     </style>
 
     <style name="Theme.Susa_lautadev" parent="Base.Theme.Susa_lautadev" />
+
+    <style name="DashedDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item> <!-- Altura del divider -->
+        <item name="android:background">@drawable/dashed_line</item> <!-- Fondo con líneas punteadas -->
+    </style>
+
 </resources>
