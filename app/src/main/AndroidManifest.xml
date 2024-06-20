@@ -13,9 +13,8 @@
         android:theme="@style/Theme.Susa_lautadev"
         tools:targetApi="31">
         <activity
-            android:name=".home_page"
-            android:exported="false"
-            android:label="@string/title_activity_home_page" />
+            android:name=".Activitys.ActivityHome"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
