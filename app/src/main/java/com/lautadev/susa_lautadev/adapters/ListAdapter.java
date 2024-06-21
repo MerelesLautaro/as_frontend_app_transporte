@@ -1,4 +1,4 @@
-package com.lautadev.susa_lautadev.ui;
+package com.lautadev.susa_lautadev.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

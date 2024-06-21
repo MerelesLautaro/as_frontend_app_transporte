@@ -1,7 +1,10 @@
 package com.lautadev.susa_lautadev.Activitys;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lautadev.susa_lautadev.R;
 import com.lautadev.susa_lautadev.model.Transactions;
 import com.lautadev.susa_lautadev.model.TypeOfOperation;
-import com.lautadev.susa_lautadev.ui.ListAdapter;
+import com.lautadev.susa_lautadev.adapters.ListAdapter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,6 +26,17 @@ public class ActivityHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Button btnLogOut = findViewById(R.id.btn_logout);
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear un Intent para iniciar la nueva Activity
+                Intent intent = new Intent(ActivityHome.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         init();
     }

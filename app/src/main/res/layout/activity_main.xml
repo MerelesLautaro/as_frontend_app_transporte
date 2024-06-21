@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background_login"
-    tools:context=".MainActivity">
+    tools:context=".Activitys.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/input_username" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_password"
+        android:id="@+id/input_password_layaout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="64dp"
@@ -91,6 +91,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|left"
@@ -112,7 +113,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password" />
+        app:layout_constraintTop_toBottomOf="@+id/input_password_layaout" />
 
     <Button
         android:id="@+id/btn_ingresar"
