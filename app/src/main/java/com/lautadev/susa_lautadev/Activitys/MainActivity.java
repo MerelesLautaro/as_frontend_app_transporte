@@ -3,6 +3,7 @@ package com.lautadev.susa_lautadev.Activitys;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
                             // Login exitoso
                             User user = response.body();
                             Toast.makeText(MainActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
+
+                            // Almacenar el ID del usuario en SharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("UserID", String.valueOf(user.getIdUser())); // Convertir Long a String
+                            editor.apply();
 
                             // Cambiar a la siguiente actividad (ActivityHome)
                             Intent intent = new Intent(MainActivity.this, ActivityHome.class);

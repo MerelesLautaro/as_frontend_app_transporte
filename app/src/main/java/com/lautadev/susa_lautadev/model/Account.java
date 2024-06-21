@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Account {
     private Long idAccount;
-    private LocalDate dateOfCreation;
+    private String dateOfCreation;
     private double balance;
     private String cvu;
     private String alias;
@@ -13,7 +13,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(Long idAccount, LocalDate dateOfCreation, double balance, String cvu, String alias, Long idUser) {
+    public Account(Long idAccount, String dateOfCreation, double balance, String cvu, String alias, Long idUser) {
         this.idAccount = idAccount;
         this.dateOfCreation = dateOfCreation;
         this.balance = balance;
@@ -30,11 +30,11 @@ public class Account {
         this.idAccount = idAccount;
     }
 
-    public LocalDate getDateOfCreation() {
+    public String getDateOfCreation() {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(LocalDate dateOfCreation) {
+    public void setDateOfCreation(String dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 

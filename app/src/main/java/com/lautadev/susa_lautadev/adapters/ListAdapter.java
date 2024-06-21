@@ -10,18 +10,19 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lautadev.susa_lautadev.R;
-import com.lautadev.susa_lautadev.model.Transactions;
+import com.lautadev.susa_lautadev.model.Transaction;
+import com.lautadev.susa_lautadev.model.TypeOfOperation;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
-    private List<Transactions> listTransactions;
+    private List<Transaction> listTransactions;
     private LayoutInflater mInflater;
     private Context context;
 
-    public ListAdapter(List<Transactions> itemsList, Context context){
+    public ListAdapter(List<Transaction> itemsList, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.listTransactions = itemsList;
@@ -41,38 +42,35 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.bindData(listTransactions.get(position));
     }
 
-    public void setItems(List<Transactions> newItems) { listTransactions = newItems;}
+    public void setItems(List<Transaction> newItems) { listTransactions = newItems;}
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img_balance;
+        ImageView img_balance, img_type_of_operation;
         TextView operation, dateoperation, amount;
 
         ViewHolder(View itemView){
             super(itemView);
             img_balance = itemView.findViewById(R.id.img_balance_view);
+            img_type_of_operation = itemView.findViewById(R.id.img_type_of_operation);
             operation = itemView.findViewById(R.id.text_operation);
-            dateoperation = itemView.findViewById(R.id.text_operation);
+            dateoperation = itemView.findViewById(R.id.text_dateoperation);
             amount = itemView.findViewById(R.id.text_amount);
         }
 
-        void bindData(final Transactions transactions){
+        void bindData(final Transaction transactions){
             // Convertir ENUM a String
             operation.setText(transactions.getTypeOfOperation().toString());
-
-            // Convertir LocalDate a String
-            DateTimeFormatter formatter = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            }
-            String formattedDate = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                formattedDate = transactions.getDateOfOperation().format(formatter);
-            }
-            dateoperation.setText(formattedDate);
-
+            dateoperation.setText(transactions.getDateOfOperation());
             // Convertir double a String con formato
             String formattedAmount = String.format(Locale.getDefault(), "%.2f", transactions.getAmount());
-            amount.setText(formattedAmount);
+            amount.setText("AR$ "+formattedAmount);
+
+            if (transactions.getTypeOfOperation() == TypeOfOperation.MoneyReceived ||
+                    transactions.getTypeOfOperation() == TypeOfOperation.BalanceTopUp) {
+                img_type_of_operation.setImageResource(R.drawable.ic_arrow_up);
+            } else {
+                img_type_of_operation.setImageResource(R.drawable.ic_arrow_down);
+            }
         }
     }
 

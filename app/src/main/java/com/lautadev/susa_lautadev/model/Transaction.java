@@ -2,17 +2,17 @@ package com.lautadev.susa_lautadev.model;
 
 import java.time.LocalDate;
 
-public class Transactions {
+public class Transaction {
     private Long idTransaction;
     private TypeOfOperation typeOfOperation;
     private double amount;
-    private LocalDate dateOfOperation;
+    private String dateOfOperation;
     private Long idAccount;
 
-    public Transactions() {
+    public Transaction() {
     }
 
-    public Transactions(Long idTransaction, TypeOfOperation typeOfOperation, double amount, LocalDate dateOfOperation, Long idAccount) {
+    public Transaction(Long idTransaction, TypeOfOperation typeOfOperation, double amount, String dateOfOperation, Long idAccount) {
         this.idTransaction = idTransaction;
         this.typeOfOperation = typeOfOperation;
         this.amount = amount;
@@ -44,11 +44,11 @@ public class Transactions {
         this.amount = amount;
     }
 
-    public LocalDate getDateOfOperation() {
+    public String getDateOfOperation() {
         return dateOfOperation;
     }
 
-    public void setDateOfOperation(LocalDate dateOfOperation) {
+    public void setDateOfOperation(String dateOfOperation) {
         this.dateOfOperation = dateOfOperation;
     }
 
