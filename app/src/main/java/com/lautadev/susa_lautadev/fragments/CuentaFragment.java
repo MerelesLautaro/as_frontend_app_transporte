@@ -1,12 +1,16 @@
 package com.lautadev.susa_lautadev.fragments;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +46,39 @@ public class CuentaFragment extends Fragment {
         textCvu = view.findViewById(R.id.text_cvu);
         textEmail = view.findViewById(R.id.text_email);
         textCel = view.findViewById(R.id.text_telefono);
+
+        ImageView btnShareAlias = view.findViewById(R.id.btn_share_alias);
+        ImageView btnCopyAlias = view.findViewById(R.id.btn_copy_alias);
+        ImageView btnShareCvu = view.findViewById(R.id.btn_share_cvu);
+        ImageView btnCopyCvu = view.findViewById(R.id.btn_copy_cvu);
+
+        btnShareAlias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareText(textAlias.getText().toString());
+            }
+        });
+
+        btnCopyAlias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyTextToClipboard(textAlias.getText().toString());
+            }
+        });
+
+        btnShareCvu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareText(textCvu.getText().toString());
+            }
+        });
+
+        btnCopyCvu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyTextToClipboard(textCvu.getText().toString());
+            }
+        });
 
         userAPIClient = ConfigUserAPIClient.getClient().create(UserAPIClient.class);
         accountAPIClient = ConfigAccountAPIClient.getClient().create(AccountAPIClient.class);
@@ -94,5 +131,19 @@ public class CuentaFragment extends Fragment {
                 t.printStackTrace();
             }
         });
+    }
+
+    private void shareText(String text) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+        startActivity(Intent.createChooser(shareIntent, "Share via"));
+    }
+
+    private void copyTextToClipboard(String text) {
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("label", text);
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(getActivity(), "Text copied to clipboard", Toast.LENGTH_SHORT).show();
     }
 }

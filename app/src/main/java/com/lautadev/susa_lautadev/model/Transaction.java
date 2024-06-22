@@ -20,6 +20,13 @@ public class Transaction {
         this.idAccount = idAccount;
     }
 
+    public Transaction(TypeOfOperation typeOfOperation, double amount, String dateOfOperation, Long idAccount) {
+        this.typeOfOperation = typeOfOperation;
+        this.amount = amount;
+        this.dateOfOperation = dateOfOperation;
+        this.idAccount = idAccount;
+    }
+
     public Long getIdTransaction() {
         return idTransaction;
     }

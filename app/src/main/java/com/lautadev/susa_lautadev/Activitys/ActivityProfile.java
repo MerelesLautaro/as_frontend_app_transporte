@@ -76,8 +76,8 @@ public class ActivityProfile extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         User user = response.body();
-                        textName.setText(user.getName());
-                        textCuit.setText(user.getCuit());
+                        textName.setText(user.getName()+" "+user.getSurname());
+                        textCuit.setText("CUIL/CUIT "+user.getCuit());
                     } else {
                         Toast.makeText(ActivityProfile.this, "Error al obtener los datos del usuario", Toast.LENGTH_SHORT).show();
                     }

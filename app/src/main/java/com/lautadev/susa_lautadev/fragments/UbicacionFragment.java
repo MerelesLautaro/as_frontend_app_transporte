@@ -64,7 +64,7 @@ public class UbicacionFragment extends Fragment {
                     textProvincie.setText(user.getProvince());
                     textDepartament.setText(user.getDepartament());
                     textCity.setText(user.getCity());
-                    textCity.setText(user.getAddress());
+                    textAddress.setText(user.getAddress());
                     textZipCode.setText(user.getZipCode());
                 }
             }

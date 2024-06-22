@@ -34,6 +34,9 @@ public interface AccountAPIClient {
     @GET("/api/account/get/cvu/{cvu}")
     Call<Account> findByCvu(@Path("cvu") String cvu);
 
+    @GET("/api/account/get/user/{id}")
+    Call<Account> findAccountByUser(@Path("id") Long id);
+
     @DELETE("/api/account/delete/{id}")
     Call<Void> deleteAccount(@Path("id") Long idAccount);
 

@@ -26,9 +26,24 @@
                 android:id="@+id/text_alias"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:gravity="end"
                 android:text="default" />
+
+            <ImageView
+                android:id="@+id/btn_share_alias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share"
+                android:layout_marginStart="8dp"
+                android:contentDescription="share_alias"/>
+            <ImageView
+                android:id="@+id/btn_copy_alias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_copy"
+                android:layout_marginStart="8dp"
+                android:contentDescription="copy_alias"/>
         </LinearLayout>
 
         <View
@@ -57,6 +72,21 @@
                 android:layout_weight="1.5"
                 android:gravity="end"
                 android:text="default" />
+            <ImageView
+                android:id="@+id/btn_share_cvu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share"
+                android:layout_marginStart="8dp"
+                android:contentDescription="share_cvu"/>
+
+            <ImageView
+                android:id="@+id/btn_copy_cvu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_copy"
+                android:layout_marginStart="8dp"
+                android:contentDescription="copy_cvu"/>
         </LinearLayout>
 
         <View

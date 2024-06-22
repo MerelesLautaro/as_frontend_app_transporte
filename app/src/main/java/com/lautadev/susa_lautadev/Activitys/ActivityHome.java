@@ -29,6 +29,8 @@ import com.lautadev.susa_lautadev.repositories.TransactionsAPIClient;
 import com.lautadev.susa_lautadev.repositories.UserAPIClient;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -179,6 +181,13 @@ public class ActivityHome extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Transaction> listTransactions = response.body();
                     System.out.println("Llamado a la funcion del recycler");
+                    // Ordenar la lista de transacciones por fecha de operación en orden descendente
+                    Collections.sort(listTransactions, new Comparator<Transaction>() {
+                        @Override
+                        public int compare(Transaction t1, Transaction t2) {
+                            return t2.getDateOfOperation().compareTo(t1.getDateOfOperation());
+                        }
+                    });
                     setupRecyclerView(listTransactions); // Método para configurar RecyclerView
                 } else {
                     Toast.makeText(ActivityHome.this, "Error al obtener las transacciones", Toast.LENGTH_SHORT).show();
@@ -200,3 +209,4 @@ public class ActivityHome extends AppCompatActivity {
         recyclerView.setAdapter(listAdapter);
     }
 }
+

@@ -13,4 +13,9 @@
         <item name="android:background">@drawable/dashed_line</item> <!-- Fondo con líneas punteadas -->
     </style>
 
+    <style name="OrangeButton">
+        <item name="android:background">@drawable/btn_orange</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
