@@ -3,15 +3,18 @@ package com.lautadev.susa_lautadev.Activitys;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lautadev.susa_lautadev.R;
 import com.lautadev.susa_lautadev.model.Account;
 import com.lautadev.susa_lautadev.model.Transaction;
@@ -47,6 +50,43 @@ public class ActivityHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.home) {
+                    // Aquí puedes manejar la navegación al home
+                    Intent homeIntent = new Intent(ActivityHome.this, ActivityHome.class);
+                    startActivity(homeIntent);
+                    return true;
+                } else if (itemId == R.id.qrcode) {
+                    // Aquí puedes manejar la navegación al QR code
+                    Intent qrIntent = new Intent(ActivityHome.this, ActivityQR.class);
+                    startActivity(qrIntent);
+                    return true;
+                } else if (itemId == R.id.opciones) {
+                    // Aquí puedes manejar la navegación al opciones
+                    Intent opcionesIntent = new Intent(ActivityHome.this, ActivityOptions.class);
+                    startActivity(opcionesIntent);
+                    return true;
+                } else if (itemId == R.id.balance) {
+                    // Aquí puedes manejar la navegación al balance
+                    Intent balanceIntent = new Intent(ActivityHome.this, ActivityBalance.class);
+                    startActivity(balanceIntent);
+                    return true;
+                } else if (itemId == R.id.person) {
+                    // Aquí manejas la navegación al perfil
+                    Intent profileIntent = new Intent(ActivityHome.this, ActivityProfile.class);
+                    startActivity(profileIntent);
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
         // Obtener las instancias de las APIs usando Retrofit
         userAPIClient = ConfigUserAPIClient.getClient().create(UserAPIClient.class);

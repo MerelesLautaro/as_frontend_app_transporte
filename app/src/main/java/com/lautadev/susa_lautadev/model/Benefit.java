@@ -6,15 +6,15 @@ import java.util.List;
 public class Benefit {
     private Long id;
     private String name;
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private String startTime;
+    private String endTime;
     private List<DayWeek> day;
     private Integer tickets;
 
     public Benefit() {
     }
 
-    public Benefit(Long id, String name, LocalTime startTime, LocalTime endTime, List<DayWeek> day, Integer tickets) {
+    public Benefit(Long id, String name, String startTime, String endTime, List<DayWeek> day, Integer tickets) {
         this.id = id;
         this.name = name;
         this.startTime = startTime;
@@ -39,19 +39,19 @@ public class Benefit {
         this.name = name;
     }
 
-    public LocalTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

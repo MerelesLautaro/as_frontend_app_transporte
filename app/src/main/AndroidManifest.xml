@@ -19,6 +19,18 @@
             android:name=".Activitys.ActivityHome"
             android:exported="false" />
         <activity
+            android:name=".Activitys.ActivityProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.ActivityBalance"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.ActivityQR"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.ActivityOptions"
+            android:exported="false" />
+        <activity
             android:name=".Activitys.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -12,6 +12,7 @@ public class User {
     private String dateOfBirth;
     private String email;
     private String password;
+    private String province;
     private String departament;
     private String city;
     private String address;
@@ -23,7 +24,7 @@ public class User {
     }
 
     public User(Long idUser, String name, String surname, String cel, String cuit, String dni,
-                String dateOfBirth, String email, String password, String departament,
+                String dateOfBirth, String email, String password, String province,String departament,
                 String city, String address, String zipCode, Long idBenefit, int tickets) {
         this.idUser = idUser;
         this.name = name;
@@ -34,12 +35,21 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.password = password;
+        this.province = province;
         this.departament = departament;
         this.city = city;
         this.address = address;
         this.zipCode = zipCode;
         this.idBenefit = idBenefit;
         this.tickets = tickets;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public Long getIdUser() {
