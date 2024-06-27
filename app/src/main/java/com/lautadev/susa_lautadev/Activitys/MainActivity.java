@@ -17,7 +17,6 @@ import com.lautadev.susa_lautadev.R;
 import com.lautadev.susa_lautadev.model.User;
 import com.lautadev.susa_lautadev.network.ConfigUserAPIClient;
 import com.lautadev.susa_lautadev.repositories.UserAPIClient;
-
 public class MainActivity extends AppCompatActivity {
 
     private UserAPIClient userApiService;

@@ -14,15 +14,12 @@ import com.lautadev.susa_lautadev.R;
 import com.lautadev.susa_lautadev.model.Account;
 import com.lautadev.susa_lautadev.model.Transaction;
 import com.lautadev.susa_lautadev.model.TypeOfOperation;
-import com.lautadev.susa_lautadev.model.User;
 import com.lautadev.susa_lautadev.network.ConfigAccountAPIClient;
 import com.lautadev.susa_lautadev.network.ConfigTransactionAPIClient;
-import com.lautadev.susa_lautadev.network.ConfigUserAPIClient;
 import com.lautadev.susa_lautadev.repositories.AccountAPIClient;
 import com.lautadev.susa_lautadev.repositories.TransactionsAPIClient;
-import com.lautadev.susa_lautadev.repositories.UserAPIClient;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -105,7 +102,7 @@ public class ActivityQR extends AppCompatActivity {
             transaction = new Transaction(
                     TypeOfOperation.QRpayment,
                     1000,
-                    LocalDate.now().toString(),
+                    LocalDateTime.now().toString(),
                     idAccount
             );
         }

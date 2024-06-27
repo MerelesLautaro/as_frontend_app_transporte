@@ -16,12 +16,12 @@ import com.lautadev.susa_lautadev.model.TypeOfOperation;
 import java.util.List;
 import java.util.Locale;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class ListAdapterPageBalance extends RecyclerView.Adapter<ListAdapterPageBalance.ViewHolder> {
     private List<Transaction> listTransactions;
     private LayoutInflater mInflater;
     private Context context;
 
-    public ListAdapter(List<Transaction> itemsList, Context context){
+    public ListAdapterPageBalance(List<Transaction> itemsList, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.listTransactions = itemsList;
@@ -31,13 +31,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public int getItemCount() {return listTransactions.size(); }
 
     @Override
-    public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ListAdapterPageBalance.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = mInflater.inflate(R.layout.list_element, null);
-        return new ListAdapter.ViewHolder(view);
+        return new ListAdapterPageBalance.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position){
+    public void onBindViewHolder(final ListAdapterPageBalance.ViewHolder holder, final int position){
         holder.bindData(listTransactions.get(position));
     }
 

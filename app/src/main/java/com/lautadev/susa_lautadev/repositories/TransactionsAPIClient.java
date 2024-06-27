@@ -36,5 +36,50 @@ public interface TransactionsAPIClient {
 
     @PUT("/api/transaction/edit/{id}")
     Call<Transaction> editTransaction(@Path("id") Long id, @Body Transaction transaction);
+
+    //Filters
+    @GET("/api/transaction/get/operation")
+    Call<List<Transaction>> getTransactionsByOperationAndAccount(
+            @Query("typeOfOperation") String typeOfOperation,
+            @Query("idAccount") Long idAccount
+    );
+
+    @GET("/api/transaction/filter/today")
+    Call<List<Transaction>> getTransactionsForToday(
+            @Query("idAccount") Long idAccount
+    );
+
+    @GET("/api/transaction/filter/yesterday")
+    Call<List<Transaction>> getTransactionsForYesterday(
+            @Query("idAccount") Long idAccount
+    );
+
+    @GET("/api/transaction/filter/last7days")
+    Call<List<Transaction>> getTransactionsForLast7Days(
+            @Query("idAccount") Long idAccount
+    );
+
+    @GET("/api/transaction/filter/last15days")
+    Call<List<Transaction>> getTransactionsForLast15Days(
+            @Query("idAccount") Long idAccount
+    );
+
+    @GET("/api/transaction/filter/lastmonth")
+    Call<List<Transaction>> getTransactionsForLastMonth(
+            @Query("idAccount") Long idAccount
+    );
+
+    @GET("/api/transaction/filter/last3months")
+    Call<List<Transaction>> getTransactionsForLast3Months(
+            @Query("idAccount") Long idAccount
+    );
+
+    @GET("/api/transaction/filter/custom")
+    Call<List<Transaction>> getTransactionsByDateAndOperationAndAccount(
+            @Query("startDate") String startDate,
+            @Query("endDate") String endDate,
+            @Query("typeOfOperation") String typeOfOperation,
+            @Query("idAccount") Long idAccount
+    );
 }
 

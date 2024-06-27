@@ -1,7 +1,5 @@
 package com.lautadev.susa_lautadev.model;
 
-import java.time.LocalDate;
-
 public class Transaction {
     private Long idTransaction;
     private TypeOfOperation typeOfOperation;

@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:gravity="end"
-                android:text="Boleto Estudiantil Gratuito" />
+                android:text="no posee" />
         </LinearLayout>
 
         <View
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:gravity="end"
-                android:text="default" />
+                android:text="no posee" />
         </LinearLayout>
 
         <View
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:gravity="end"
-                android:text="lautaro19.mereles@hotmail.com" />
+                android:text="no posee" />
         </LinearLayout>
 
         <View
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:gravity="end"
-                android:text="default" />
+                android:text="no posee" />
         </LinearLayout>
 
         <View

@@ -60,7 +60,7 @@ public class UbicacionFragment extends Fragment {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     User user = response.body();
-                    //textCountry.setText(user.getC);
+                    textCountry.setText(user.getCountry());
                     textProvincie.setText(user.getProvince());
                     textDepartament.setText(user.getDepartament());
                     textCity.setText(user.getCity());

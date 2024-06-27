@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back_balance" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Balance"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btn_filter_on"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_filter_on" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:context=".FilterActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filtrar por Fecha"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_hoy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hoy"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radio_ayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ayer"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radio_siete_dias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Últimos 7 días"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/radio_quince_dias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Últimos 15 días"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/radio_ultimo_mes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Último mes"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/radio_mes_tres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Últimos 3 meses"
+                android:textStyle="bold"/>
+        </RadioGroup>
+
+        <View
+            android:id="@+id/view"
+            style="@style/DashedDivider"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_last_balance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_balance" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filtrar por Tipo de Operación"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupOperacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_moneyReceived"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dinero Recibido"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/radio_balanceTopUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recarga de Saldo"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/radio_moneyTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Envio de Dinero"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/radio_QRpayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pago con QR"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/radio_withDrawalOfMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Retiro de Dinero"
+                android:textStyle="bold"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_apply_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aplicar Filtros"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
