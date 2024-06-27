@@ -2,6 +2,7 @@ package com.lautadev.susa_lautadev.repositories;
 
 import com.lautadev.susa_lautadev.dto.TransactionDTO;
 import com.lautadev.susa_lautadev.model.Transaction;
+import com.lautadev.susa_lautadev.model.TypeOfOperation;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -40,7 +41,7 @@ public interface TransactionsAPIClient {
     //Filters
     @GET("/api/transaction/get/operation")
     Call<List<Transaction>> getTransactionsByOperationAndAccount(
-            @Query("typeOfOperation") String typeOfOperation,
+            @Query("typeOfOperation") TypeOfOperation typeOfOperation,
             @Query("idAccount") Long idAccount
     );
 
@@ -76,9 +77,8 @@ public interface TransactionsAPIClient {
 
     @GET("/api/transaction/filter/custom")
     Call<List<Transaction>> getTransactionsByDateAndOperationAndAccount(
-            @Query("startDate") String startDate,
-            @Query("endDate") String endDate,
-            @Query("typeOfOperation") String typeOfOperation,
+            @Query("dateFilter") String dateFilter,
+            @Query("typeOfOperation") TypeOfOperation typeOfOperation,
             @Query("idAccount") Long idAccount
     );
 }

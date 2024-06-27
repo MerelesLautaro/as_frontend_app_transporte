@@ -26,6 +26,8 @@ import com.lautadev.susa_lautadev.repositories.AccountAPIClient;
 import com.lautadev.susa_lautadev.repositories.TransactionsAPIClient;
 import com.lautadev.susa_lautadev.repositories.UserAPIClient;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -39,7 +41,7 @@ public class ActivityBalance extends AppCompatActivity {
     private UserAPIClient userAPIClient;
     private AccountAPIClient accountAPIClient;
     private TransactionsAPIClient transactionAPIClient;
-    private ImageView btnBack, btnFilter;
+    private ImageView btnBack, btnFilter, btnFilterOff;
     private TextView txtBalance;
     private Long idAccount;
     private RecyclerView recyclerView;
@@ -69,6 +71,17 @@ public class ActivityBalance extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_CODE_FILTER);
             }
         });
+
+        btnFilterOff = findViewById(R.id.btn_filter_off);
+
+        btnFilterOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                init();
+                Toast.makeText(ActivityBalance.this, "Filtros Limpiados" , Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         txtBalance = findViewById(R.id.text_account_balance);
 
@@ -135,14 +148,14 @@ public class ActivityBalance extends AppCompatActivity {
             public void onResponse(Call<List<Transaction>> call, Response<List<Transaction>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Transaction> listTransactions = response.body();
-
+                    // Ordenar las transacciones por fecha de operación
                     Collections.sort(listTransactions, new Comparator<Transaction>() {
                         @Override
                         public int compare(Transaction t1, Transaction t2) {
                             return t2.getDateOfOperation().compareTo(t1.getDateOfOperation());
                         }
                     });
-                    setupRecyclerView(listTransactions);
+                    setupRecyclerView(listTransactions); // Configurar el RecyclerView con las transacciones obtenidas
                 } else {
                     Toast.makeText(ActivityBalance.this, "Error al obtener las transacciones", Toast.LENGTH_SHORT).show();
                 }
@@ -167,36 +180,76 @@ public class ActivityBalance extends AppCompatActivity {
         }
     }
 
-    private void applyFilters(String fecha, String operacion) {
-        Call<List<Transaction>> call = null;
-
-        switch (fecha) {
-            case "Hoy":
-                call = transactionAPIClient.getTransactionsForToday(idAccount);
-                break;
-            case "Ayer":
-                call = transactionAPIClient.getTransactionsForYesterday(idAccount);
-                break;
-            case "Últimos 7 días":
-                call = transactionAPIClient.getTransactionsForLast7Days(idAccount);
-                break;
-            case "Últimos 15 días":
-                call = transactionAPIClient.getTransactionsForLast15Days(idAccount);
-                break;
-            case "Último mes":
-                call = transactionAPIClient.getTransactionsForLastMonth(idAccount);
-                break;
-            case "Últimos 3 meses":
-                call = transactionAPIClient.getTransactionsForLast3Months(idAccount);
-                break;
-        }
-
-        if (call != null) {
-            fetchTransactions(call);
-        } else {
-            Toast.makeText(this, "Filtro de fecha no válido", Toast.LENGTH_SHORT).show();
+    private TypeOfOperation getTypeOfOperationFromString(String operationString) {
+        switch (operationString) {
+            case "Dinero Recibido":
+                return TypeOfOperation.MoneyReceived;
+            case "Recarga de Saldo":
+                return TypeOfOperation.BalanceTopUp;
+            case "Envio de Dinero":
+                return TypeOfOperation.MoneyTransfer;
+            case "Pago con QR":
+                return TypeOfOperation.QRpayment;
+            case "Retiro de Dinero":
+                return TypeOfOperation.WithDrawalOfMoney;
+            default:
+                return null;
         }
     }
+
+    private void applyFilters(String fecha, String operacion) {
+        if (fecha != null && !fecha.isEmpty() && operacion != null && !operacion.isEmpty()) {
+            // Ambos filtros seleccionados: por fecha y tipo de operación
+            TypeOfOperation typeOfOperation = getTypeOfOperationFromString(operacion);
+            if (typeOfOperation != null) {
+                Call<List<Transaction>> call = transactionAPIClient.getTransactionsByDateAndOperationAndAccount(fecha, typeOfOperation, idAccount);
+                fetchTransactions(call);
+            } else {
+                Toast.makeText(this, "Tipo de operación no válido", Toast.LENGTH_SHORT).show();
+            }
+        } else if (fecha != null && !fecha.isEmpty()) {
+            // Filtro por fecha seleccionado
+            Call<List<Transaction>> call = null;
+            switch (fecha) {
+                case "Hoy":
+                    call = transactionAPIClient.getTransactionsForToday(idAccount);
+                    break;
+                case "Ayer":
+                    call = transactionAPIClient.getTransactionsForYesterday(idAccount);
+                    break;
+                case "Últimos 7 días":
+                    call = transactionAPIClient.getTransactionsForLast7Days(idAccount);
+                    break;
+                case "Últimos 15 días":
+                    call = transactionAPIClient.getTransactionsForLast15Days(idAccount);
+                    break;
+                case "Último mes":
+                    call = transactionAPIClient.getTransactionsForLastMonth(idAccount);
+                    break;
+                case "Últimos 3 meses":
+                    call = transactionAPIClient.getTransactionsForLast3Months(idAccount);
+                    break;
+            }
+            if (call != null) {
+                fetchTransactions(call);
+            } else {
+                Toast.makeText(this, "Filtro de fecha no válido", Toast.LENGTH_SHORT).show();
+            }
+        } else if (operacion != null && !operacion.isEmpty()) {
+            // Filtro por tipo de operación seleccionado
+            TypeOfOperation typeOfOperation = getTypeOfOperationFromString(operacion);
+            if (typeOfOperation != null) {
+                Call<List<Transaction>> call = transactionAPIClient.getTransactionsByOperationAndAccount(typeOfOperation, idAccount);
+                fetchTransactions(call);
+            } else {
+                Toast.makeText(this, "Tipo de operación no válido", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // Ningún filtro seleccionado
+            Toast.makeText(this, "Seleccione un filtro", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     private void setupRecyclerView(List<Transaction> listTransactions) {
         double totalIngresos = 0.0;

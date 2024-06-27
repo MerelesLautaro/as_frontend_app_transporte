@@ -32,15 +32,6 @@
             android:text="Balance"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/btn_filter_on"
-            android:layout_width="29dp"
-            android:layout_height="29dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_filter_on" />
-
     </RelativeLayout>
 
     <LinearLayout
