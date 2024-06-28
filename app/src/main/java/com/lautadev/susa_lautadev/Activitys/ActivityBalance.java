@@ -26,8 +26,6 @@ import com.lautadev.susa_lautadev.repositories.AccountAPIClient;
 import com.lautadev.susa_lautadev.repositories.TransactionsAPIClient;
 import com.lautadev.susa_lautadev.repositories.UserAPIClient;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;

@@ -19,7 +19,6 @@ import com.lautadev.susa_lautadev.R;
 import com.lautadev.susa_lautadev.model.Account;
 import com.lautadev.susa_lautadev.model.Transaction;
 import com.lautadev.susa_lautadev.adapters.ListAdapter;
-import com.lautadev.susa_lautadev.model.TypeOfOperation;
 import com.lautadev.susa_lautadev.model.User;
 import com.lautadev.susa_lautadev.network.ConfigAccountAPIClient;
 import com.lautadev.susa_lautadev.network.ConfigTransactionAPIClient;
@@ -28,7 +27,6 @@ import com.lautadev.susa_lautadev.repositories.AccountAPIClient;
 import com.lautadev.susa_lautadev.repositories.TransactionsAPIClient;
 import com.lautadev.susa_lautadev.repositories.UserAPIClient;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -60,27 +58,22 @@ public class ActivityHome extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.home) {
-                    // Aquí puedes manejar la navegación al home
                     Intent homeIntent = new Intent(ActivityHome.this, ActivityHome.class);
                     startActivity(homeIntent);
                     return true;
                 } else if (itemId == R.id.qrcode) {
-                    // Aquí puedes manejar la navegación al QR code
                     Intent qrIntent = new Intent(ActivityHome.this, ActivityQR.class);
                     startActivity(qrIntent);
                     return true;
                 } else if (itemId == R.id.opciones) {
-                    // Aquí puedes manejar la navegación al opciones
-                    Intent opcionesIntent = new Intent(ActivityHome.this, ActivityOptions.class);
+                    Intent opcionesIntent = new Intent(ActivityHome.this, ActivityMenu.class);
                     startActivity(opcionesIntent);
                     return true;
                 } else if (itemId == R.id.balance) {
-                    // Aquí puedes manejar la navegación al balance
                     Intent balanceIntent = new Intent(ActivityHome.this, ActivityBalance.class);
                     startActivity(balanceIntent);
                     return true;
                 } else if (itemId == R.id.person) {
-                    // Aquí manejas la navegación al perfil
                     Intent profileIntent = new Intent(ActivityHome.this, ActivityProfile.class);
                     startActivity(profileIntent);
                     return true;
@@ -165,7 +158,6 @@ public class ActivityHome extends AppCompatActivity {
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Crear un Intent para iniciar la nueva Activity
                 Intent intent = new Intent(ActivityHome.this, MainActivity.class);
                 startActivity(intent);
             }

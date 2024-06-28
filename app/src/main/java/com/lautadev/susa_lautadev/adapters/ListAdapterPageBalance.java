@@ -13,6 +13,9 @@ import com.lautadev.susa_lautadev.R;
 import com.lautadev.susa_lautadev.model.Transaction;
 import com.lautadev.susa_lautadev.model.TypeOfOperation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -58,8 +61,8 @@ public class ListAdapterPageBalance extends RecyclerView.Adapter<ListAdapterPage
 
         void bindData(final Transaction transactions){
             // Convertir ENUM a String
-            operation.setText(transactions.getTypeOfOperation().toString());
-            dateoperation.setText(transactions.getDateOfOperation());
+            operation.setText(getReadableTypeOfOperation(transactions.getTypeOfOperation()));
+            dateoperation.setText(formatDate(transactions.getDateOfOperation()));
             // Convertir double a String con formato
             String formattedAmount = String.format(Locale.getDefault(), "%.2f", transactions.getAmount());
             amount.setText("AR$ "+formattedAmount);
@@ -69,6 +72,35 @@ public class ListAdapterPageBalance extends RecyclerView.Adapter<ListAdapterPage
                 img_type_of_operation.setImageResource(R.drawable.ic_arrow_up);
             } else {
                 img_type_of_operation.setImageResource(R.drawable.ic_arrow_down);
+            }
+        }
+
+        private String getReadableTypeOfOperation(TypeOfOperation type) {
+            switch (type) {
+                case MoneyReceived:
+                    return "Dinero Recibido";
+                case BalanceTopUp:
+                    return "Recarga de Saldo";
+                case MoneyTransfer:
+                    return "Envio de Dinero";
+                case QRpayment:
+                    return "Pago con QR";
+                case WithDrawalOfMoney:
+                    return "Retiro de Dinero";
+                default:
+                    return "Operación Desconocida";
+            }
+        }
+
+        private String formatDate(String dateString) {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            try {
+                Date date = inputFormat.parse(dateString);
+                return outputFormat.format(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return dateString;
             }
         }
     }

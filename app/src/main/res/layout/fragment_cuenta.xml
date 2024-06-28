@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:gravity="end"
-                android:text="lautaro19.mereles@hotmail.com" />
+                android:text="default" />
         </LinearLayout>
 
         <View

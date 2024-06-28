@@ -14,7 +14,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.lautadev.susa_lautadev.R;
 import com.lautadev.susa_lautadev.adapters.SectionsPagerAdapter;
-import com.lautadev.susa_lautadev.model.Account;
 import com.lautadev.susa_lautadev.model.User;
 import com.lautadev.susa_lautadev.network.ConfigUserAPIClient;
 import com.lautadev.susa_lautadev.repositories.UserAPIClient;

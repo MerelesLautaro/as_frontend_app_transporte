@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_page_menu">
+
+    <FrameLayout
+        android:id="@+id/frame_payment"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/round_background_img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_payment"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_payment_white" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Enviar Dinero"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/frame_payment"
+        app:layout_constraintStart_toStartOf="@id/frame_payment"
+        app:layout_constraintTop_toBottomOf="@id/frame_payment" />
+
+    <FrameLayout
+        android:id="@+id/frame_qr"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/round_background_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/frame_payment"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_qr_white"
+            android:padding="8dp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Operaciones con QR"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/frame_qr"
+        app:layout_constraintStart_toStartOf="@id/frame_qr"
+        app:layout_constraintTop_toBottomOf="@id/frame_qr" />
+
+    <FrameLayout
+        android:id="@+id/frame_withdrawalOfMoney"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/round_background_img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_payment">
+
+        <ImageView
+            android:id="@+id/btn_withdrawalOfMoney"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_bank" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Solicitud de Retiro"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/frame_withdrawalOfMoney"
+        app:layout_constraintStart_toStartOf="@+id/frame_withdrawalOfMoney"
+        app:layout_constraintTop_toBottomOf="@+id/frame_withdrawalOfMoney" />
+
+    <FrameLayout
+        android:id="@+id/frame_groups"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/round_background_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frame_withdrawalOfMoney"
+        app:layout_constraintTop_toBottomOf="@+id/text_qr">
+
+        <ImageView
+            android:id="@+id/btn_groups"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_groups_white"
+            android:padding="8dp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_groups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Menores Asociados"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/frame_groups"
+        app:layout_constraintStart_toStartOf="@+id/frame_groups"
+        app:layout_constraintTop_toBottomOf="@+id/frame_groups" />
+
+    <FrameLayout
+        android:id="@+id/frame_maps"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/round_background_img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <ImageView
+            android:id="@+id/btn_map"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_maps_white" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Consultar Rutas"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/frame_maps"
+        app:layout_constraintStart_toStartOf="@+id/frame_maps"
+        app:layout_constraintTop_toBottomOf="@+id/frame_maps" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:text="X"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,4 +7,5 @@
     <color name="grey">#434343</color>
     <color name="orange_navbar">#EA6914</color>
     <color name="background_grey">#DEDFE6</color>
+    <color name="background_page_menu">#31435F</color>
 </resources>

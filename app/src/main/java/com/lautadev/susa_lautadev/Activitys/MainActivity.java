@@ -67,9 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        // Manejar errores de red u otros errores
                         Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-
                         System.out.println("Error: " + t.getMessage());
                     }
                 });

@@ -17,8 +17,6 @@ import com.lautadev.susa_lautadev.model.User;
 import com.lautadev.susa_lautadev.network.ConfigUserAPIClient;
 import com.lautadev.susa_lautadev.repositories.UserAPIClient;
 
-import org.w3c.dom.Text;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
